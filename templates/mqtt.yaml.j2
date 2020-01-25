@@ -1,0 +1,40 @@
+{%- if home_assistant_mqtt_configuration.client_id is defined and home_assistant_mqtt_configuration.client_id | length -%}
+client_id: {{ home_assistant_mqtt_configuration.client_id }}
+{%- endif -%}
+{%- if home_assistant_mqtt_configuration.broker is defined and home_assistant_mqtt_configuration.broker | length  -%}
+broker: {{ home_assistant_mqtt_configuration.broker }}
+{%- endif -%}
+{%- if home_assistant_mqtt_configuration.port is defined and home_assistant_mqtt_configuration.port | number  -%}
+port: {{ home_assistant_mqtt_configuration.port }}
+{%- endif -%}
+{%- if home_assistant_mqtt_configuration.protocol is defined and home_assistant_mqtt_configuration.protocol | length  -%}
+protocol: {{ home_assistant_mqtt_configuration.protocol }}
+{%- endif -%}
+{%- if home_assistant_mqtt_configuration.ca_crt_file is defined and home_assistant_mqtt_configuration.ca_crt_file | length  -%}
+certificate: {{ home_assistant_mqtt_configuration.ca_crt_file }}
+{%- endif -%}
+
+{%- if home_assistant_mqtt_configuration.authentication is defined and home_assistant_mqtt_configuration.authentication is mapping -%}
+	{%- if home_assistant_mqtt_configuration.authentication.username is defined and home_assistant_mqtt_configuration.authentication.username | length  -%}
+username: {{ home_assistant_mqtt_configuration.authentication.username }}
+	{%- endif -%}
+	{%- if home_assistant_mqtt_configuration.authentication.password is defined and home_assistant_mqtt_configuration.authentication.password | length  -%}
+password: {{ home_assistant_mqtt_configuration.authentication.password }}
+	{%- endif -%}
+	{%- if home_assistant_mqtt_configuration.authentication.client_key is defined and home_assistant_mqtt_configuration.authentication.client_key | length  -%}
+client_key: {{ home_assistant_mqtt_configuration.authentication.client_key }}
+	{%- endif -%}
+	{%- if home_assistant_mqtt_configuration.authentication.client_cert is defined and home_assistant_mqtt_configuration.authentication.client_cert | length  -%}
+client_cert: {{ home_assistant_mqtt_configuration.authentication.client_cert }}
+	{%- endif -%}
+{%- endif -%}
+
+
+{%- if home_assistant_mqtt_configuration.encryption is defined and home_assistant_mqtt_configuration.encryption is mapping -%}
+	{%- if home_assistant_mqtt_configuration.encryption.tls_insecure is defined and (home_assistant_mqtt_configuration.encryption.tls_insecure is sameas true or home_assistant_mqtt_configuration.encryption.tls_insecure is sameas false) -%}
+tls_insecure: {{ home_assistant_mqtt_configuration.encryption.tls_insecure }}
+	{%- endif -%}
+	{%- if home_assistant_mqtt_configuration.encryption.tls_version is defined and home_assistant_mqtt_configuration.encryption.tls_version | length -%}
+tls_version: {{ home_assistant_mqtt_configuration.encryption.tls_version }}
+	{%- endif -%}
+{%- endif -%}

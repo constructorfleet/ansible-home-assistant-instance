@@ -1,0 +1,41 @@
+---
+
+home_assistant_instance_name: instance
+home_assistant_instance_description: A home assistant instance
+
+home_assistant_latitude: 32.87336
+home_assistant_longitude: 117.22743
+home_assistant_elevation: 430
+home_assistant_timezone: America/Los_Angeles
+
+home_assistant_instance_port: 8123
+home_assistant_is_slave: false
+home_assistant_devices: []
+
+home_assistant_version: 0.88.2
+
+home_assistant_instance_secrets: {}
+
+home_assistant_configuration_repository: https://github.com/constructorfleet/HomeAssistant-Config-Master.git
+home_assistant_configuration_repository_version: master
+home_assistant_configuration_directory: /data/config/automation/master
+
+home_assistant_mqtt_configuration:
+  broker:
+  port:
+  keep_alive: 60
+  client_id: home-assistant
+  protocol: 3.1
+  ca_crt_file:
+  encryption:
+    tls_insecure: true
+    tls_version:
+  authentication:
+    username:
+    password:
+    client_key:
+    client_cert:
+  event_stream:
+    publish_topic:
+    subscribe_topic:
+    ignore_event: []

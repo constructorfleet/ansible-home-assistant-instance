@@ -1,0 +1,34 @@
+---
+
+- name: Clone configuration for instance
+  git:
+    repo: "{{ home_assistant_configuration_repository }}"
+    version: "{{ home_assistant_configuration_repository_version | default('master') }}"
+    dest: "{{ home_assistant_configuration_directory }}"
+    recursive: yes
+    track_submodules: no
+  tags:
+    - config
+
+- name: Create MQTT configuration file for instance
+  template:
+    src: mqtt.yaml.j2
+    dest: "{{ home_assistant_configuration_directory }}/mqtt.yaml"
+  tags:
+    - config
+
+- name: Create MQTT event stream configuration file for instance
+  template:
+    src: mqtt_eventstream.yaml.j2
+    dest: "{{ home_assistant_configuration_directory }}/mqtt_eventstream.yaml"
+  tags:
+    - config
+
+- name: Create secrets file for instance
+  template:
+    src: secrets.yaml.j2
+    dest: "{{ home_assistant_configuration_directory}}/secrets.yaml"
+  with_items: "{{ home_assistant_instance_secrets }}"
+  tags:
+    - config
+    - secrets

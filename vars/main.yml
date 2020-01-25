@@ -1,0 +1,7 @@
+---
+
+home_assistant_core_secrets:
+  - home_assistant_latitude
+  - home_assistant_longitude
+  - home_assistant_elevation
+  - home_assistant_timezone
