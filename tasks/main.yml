@@ -8,21 +8,23 @@
     recursive: yes
     track_submodules: no
   tags:
-    - config
+    - home_assistant_config
 
 - name: Create MQTT configuration file for instance
   template:
     src: mqtt.yaml.j2
     dest: "{{ home_assistant_configuration_directory }}/mqtt.yaml"
+  when: home_assistant_mqtt_configuration is defined and home_assistant_mqtt_configuration is mapping
   tags:
-    - config
+    - home_assistant_config
 
 - name: Create MQTT event stream configuration file for instance
   template:
     src: mqtt_eventstream.yaml.j2
     dest: "{{ home_assistant_configuration_directory }}/mqtt_eventstream.yaml"
+  when: home_assistant_mqtt_configuration is defined and home_assistant_mqtt_configuration is mapping
   tags:
-    - config
+    - home_assistant_config
 
 - name: Create secrets file for instance
   template:
@@ -30,5 +32,5 @@
     dest: "{{ home_assistant_configuration_directory}}/secrets.yaml"
   with_items: "{{ home_assistant_instance_secrets }}"
   tags:
-    - config
-    - secrets
+    - home_assistant_config
+    - home_assistant_secrets
