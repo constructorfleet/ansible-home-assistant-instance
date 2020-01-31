@@ -9,6 +9,9 @@ home_assistant_elevation: 430
 home_assistant_timezone: America/Los_Angeles
 
 home_assistant_instance_port: 8123
+home_assistant_network_mode:
+home_assistant_docker_networks:
+
 home_assistant_is_slave: false
 home_assistant_devices: []
 
@@ -19,6 +22,12 @@ home_assistant_instance_secrets: {}
 home_assistant_configuration_repository: https://github.com/constructorfleet/HomeAssistant-Config-Master.git
 home_assistant_configuration_repository_version: master
 home_assistant_configuration_directory: /data/config/automation/master
+
+home_assistant_snapshot_configuration:
+  snapshot_directory:
+  snapshot_frequency: 
+  snapshot_files: []
+  snapshot_directories: []
 
 home_assistant_mqtt_configuration:
   broker:
