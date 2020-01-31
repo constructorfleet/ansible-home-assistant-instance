@@ -5,3 +5,16 @@ home_assistant_core_secrets:
   - home_assistant_longitude
   - home_assistant_elevation
   - home_assistant_timezone
+
+home_assistant_docker_container:
+  name: "{{ home_assistant_instance_name }}"
+  description: "{{ home_assistant_instance_description }}"
+  image: "homeassistant/home-assistant:{{ home_assistant_version }}"
+  network_mode: "{{ home_assistant_network_mode | default('bridge') }}"
+  networks: "{{ home_assistant_docker_networks | default(omit) }}"
+  published_ports: "{{ home_assistant_instance_port | default('8123') }}: {{ home_assistant_instance_port | default('8123') }}"
+  volumes:
+    - "{{ home_assistant_configuration_directory }}:/config"
+    - /etc/localtime:/etc/localtime:ro
+  devices: "{{ home_assistant_devices | default([]) }}"
+  privileged: "{{ home_assistant_devices is defined }}"
